@@ -1,0 +1,26 @@
+services:
+  web:
+    build: app
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
+    networks:
+      - net
+  ollama:
+    build: ollama
+    ports:
+      - 11434:11434
+    volumes:
+      - local-vol:/ollama
+    networks:
+      - net
+    entrypoint: ["/usr/bin/bash", "/pull-llama.sh"]
+
+networks:
+  net:
+    driver: bridge
+
+volumes:
+  local-vol:
+    driver: local
