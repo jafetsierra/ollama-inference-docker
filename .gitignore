@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#model weights
+ft_models/*
+ollama/models/*
+
 # C extensions
 *.so
 

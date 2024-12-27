@@ -13,8 +13,9 @@ ENV OLLAMA_DEBUG false
 ENV OLLAMA_KEEP_ALIVE -1
 
 # Store the model weights in the container image
-ENV MODEL llama3.2:1b
-RUN ollama serve & sleep 5 && ollama pull $MODEL
+ENV MODEL ollama-32-1b-ft-v1
+RUN ollama create $MODEL -f models/v1/Modelfile
+RUN ollama serve & sleep 5 && ollama run $MODEL
 
 # Start Ollama
 ENTRYPOINT ["ollama", "serve"]
